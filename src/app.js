@@ -11,9 +11,32 @@ const ExpenseDashBoardPage = () => (
 );
 
 
+const AddExpensePage = () => (
+    <div>
+        This is from my add expense component
+    </div>
+);
+
+const EditExpensePage = () => (
+    <div>
+        This is from my edit expense component
+    </div>
+);
+
+const HelpPage = () => (
+    <div>
+        This is from my help page component
+    </div>
+);
+
 const routes = (
     <BrowserRouter>
-        <Route path='/' component={ExpenseDashBoardPage}/>
+        <div>
+            <Route path='/' component={ExpenseDashBoardPage} exact={true}/>
+            <Route path='/create' component={AddExpensePage}/>
+            <Route path='/edit' component={EditExpensePage}/>
+            <Route path='/help' component={HelpPage}/>
+        </div>
     </BrowserRouter>
 );
 

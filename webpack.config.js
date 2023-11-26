@@ -32,7 +32,8 @@ module.exports = {
 
     //dev-server is generating its own bundle.js file, replaces live server
     devServer: {
-        static: path.join(__dirname, 'public')
+        static: path.join(__dirname, 'public'),
+        historyApiFallback: true //makes it go from server side routing to client side and has the index.html do everything
     },
     mode: 'development'
 };
