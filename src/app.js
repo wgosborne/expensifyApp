@@ -3,11 +3,11 @@
 //go to webpack.config.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IndecisionApp from './components/IndecisionApp';
+//import IndecisionApp from './components/IndecisionApp';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+ReactDOM.render(<p>Boilerplate React App Skeleton</p>, document.getElementById('app'));
 
 //***Finished this application on 11/26/23 at 12:20am after returning from thanksgiving at mom's house. Had the best week ever and I listened to
 //a bunch of podcasts that got me really jazzed up and I finally created a github for it today and the last touch was adding the purple icon to the
