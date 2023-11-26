@@ -7,16 +7,12 @@ import IndecisionApp from './components/IndecisionApp';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-// const Layout = () => {
-//     return (
-//         <div>
-//             <p>Header</p>
-//             <p>Footer</p>
-//         </div>
-//     )
-// }
-
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+
+//***Finished this application on 11/26/23 at 12:20am after returning from thanksgiving at mom's house. Had the best week ever and I listened to
+//a bunch of podcasts that got me really jazzed up and I finally created a github for it today and the last touch was adding the purple icon to the
+//browser tab. It took me so long to debug the dependency errors but it paid off :)***\\
+
 
 
 // const Layout = (props) => {
