@@ -22,7 +22,10 @@ const resetCount = () => ({
     type: 'RESET',
 });
 
-const store = createStore((state = { count : 0 }, action) => { 
+//Reducers
+//  1. Reduers are pure functions - output is only determined by input, no global variable dependencies
+//  2. Never change the state or action
+const reducer = (state = { count : 0 }, action) => { //reducer function
     switch (action.type){
         case 'INCREMENT':
             return {
@@ -42,14 +45,10 @@ const store = createStore((state = { count : 0 }, action) => {
             }
         default: return state;
     }
-    // if (action.type === 'INCREMENT'){
-    //     return {
-    //         count: state.count +1
-    //     }
-    // } else{
-    //     return state;
-    // }
-});
+}
+
+
+const store = createStore(countReducer);
 
 //subscribe watches for changes and then acts on them
 const unsubscribe = store.subscribe(() => {
