@@ -19,13 +19,26 @@ const addExpense = (
         createdAt
     }
 });
+
 //REMOVE_EXPENSE
 const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id: id
-})
+});
+
 //EDIT_EXPENSE
+const editExpense = (id, updates) => ({
+    type: 'EDIT_EXPENSE',
+    id,
+    updates
+});
+
 //SET_TEXT_FILTER
+const setTextFilter = (text = '') => ({
+    type: 'SET_TEXT_FILTER', 
+    text
+});
+
 //SORT_BY_DATE
 //SORT_BY_AMOUNT
 //SET_START_DATE
@@ -45,6 +58,17 @@ const expenseReducer = (state = expenseReducerDefaultState, action) => {
             ];
         case 'REMOVE_EXPENSE':
             return state.filter(({ id }) => id !== action.id);
+        case 'EDIT_EXPENSE':
+            return state.map((expense) => {
+                if(expense.id === action.id) {
+                    return {
+                        ...expense,
+                        ...action.updates
+                    }
+                } else {
+                    return expense;
+                }
+            })
         default: 
             return state;
     }
@@ -61,10 +85,14 @@ const filtersReducerDefaultState = {
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
 switch (action.type) {
+    case 'SET_TEXT_FILTER':
+        return {
+            ...state,
+            text: action.text
+        }
     default: 
         return state;
-}
-};
+}};
 
 //Store Creation
 
@@ -84,6 +112,11 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 30
 
 //Calling remove expense
 store.dispatch(removeExpense({ id: expenseOne.expense.id }));
+//calling edit expense
+store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 })); //pass in the expense and the change
+//calling filters reducer
+store.dispatch(setTextFilter('rent')); //should see expenses with test rent
+store.dispatch(setTextFilter('')); //should see expenses with test rent
 
 console.log(expenseOne);
 
@@ -102,3 +135,14 @@ const demoState = {
         endDate: undefined
     }
 };
+
+const user = {
+    name: 'Jen',
+    age: 24
+}
+
+console.log({
+    ...user, 
+    location: 'Philly',
+    age: 27
+});
