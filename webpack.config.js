@@ -4,7 +4,7 @@ const path = require('path');
 
 //entry -> output, module.exports is a node thing
 module.exports = {
-    entry: './src/playground/hoc.js',
+    entry: './src/app.js',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
