@@ -10,7 +10,8 @@ export default class ExpenseForm extends React.Component { //using a class compo
         note: '',
         amount: '',
         createdAt: moment(),
-        calendarFocused: false
+        calendarFocused: false,
+        error: ''
     };
 
     onDescriptionChange = (e) => {
@@ -25,23 +26,44 @@ export default class ExpenseForm extends React.Component { //using a class compo
 
     onAmountChange = (e) => {
         const amount = e.target.value;
-        if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+        if (!amount || amount.match(/^\d*(\.\d{0,2})?$/)) {
             this.setState(() => ({ amount}));
         };
     };
 
     onDateChange = (createdAt) => {
-        this.setState(() => ({ createdAt }));
+        if(createdAt) {
+            this.setState(() => ({ createdAt }));
+        }
     };
 
     onFocusChange = ({ focused }) => {
         this.setState(() => ({calendarFocused: focused}))
     };
 
+    onSubmit = (e) => {
+        e.preventDefault(); //prevents full page refresh
+
+        if (!this.state.description || !this.state.amount) {
+            this.setState(() => ({ error: 'The description and amount fields must be filled out before submitted' }));
+        } else {
+            //clear the error
+            this.setState(() => ({ error: '' }));
+            this.props.onSubmit({
+                description: this.state.description,
+                amount: parseFloat(this.state.amount, 10) *100, //getting it out of cents
+                createdAt: this.state.createdAt.valueOf(),
+                note: this.state.note
+
+            });
+        };
+    }
+
     render() {
         return (
             <div>
-                <form>
+                <p>{this.state.error}</p>
+                <form onSubmit={this.onSubmit}>
                     <input
                         type="text"
                         placeholder="Description"
