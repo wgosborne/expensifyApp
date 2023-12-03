@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShallowWrapper, mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 //import toJSON from 'enzyme-to-json'; removing bc its added in the jest.config.json
 //import ReactShallowRenderer from 'react-test-renderer/shallow'; //shallow rendering only renders given component, no children
 import Header from '../../components/Header';
