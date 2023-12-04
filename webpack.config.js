@@ -3,8 +3,13 @@
 const path = require('path');
 
 //entry -> output, module.exports is a node thing
-module.exports = {
-    entry: './src/app.js',
+module.exports = (env) => {
+
+    const isProduction = env.production === true;
+    console.log('env', env);
+    console.log(isProduction);
+    return {
+        entry: './src/app.js',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
@@ -28,7 +33,7 @@ module.exports = {
     },
     //creating a source map to help find errors and such
     //look at the webpack documentation to find all the tools
-    devtool: 'eval-cheap-module-source-map',
+    devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
 
     //dev-server is generating its own bundle.js file, replaces live server
     devServer: {
@@ -36,5 +41,6 @@ module.exports = {
         historyApiFallback: true //makes it go from server side routing to client side and has the index.html do everything
     },
     mode: 'development'
+    }
 };
 
