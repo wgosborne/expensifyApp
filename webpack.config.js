@@ -1,6 +1,7 @@
 //node script, node is just javascript p much
 
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //entry -> output, module.exports is a node thing
 module.exports = (env) => {
@@ -8,6 +9,9 @@ module.exports = (env) => {
     const isProduction = env.production === true;
     console.log('env', env);
     console.log(isProduction);
+
+    //const CSSExtract = new MiniCssExtractPlugin('styles.css')
+
     return {
         entry: './src/app.js',
     output: {
@@ -24,16 +28,28 @@ module.exports = (env) => {
         }, {
             test: /\.s?css$/, 
             use: [
-                'style-loader',
-                'babel-loader',
-                'css-loader',
-                'sass-loader'
+                MiniCssExtractPlugin.loader,
+                {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                }
             ]
         }]
     },
+    plugins: [
+        new MiniCssExtractPlugin({filename: 'styles.css'})
+    ],
     //creating a source map to help find errors and such
     //look at the webpack documentation to find all the tools
-    devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
 
     //dev-server is generating its own bundle.js file, replaces live server
     devServer: {
