@@ -3,16 +3,31 @@ import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
 import { addExpense } from "../actions/expenses";
 
-const AddExpensePage = (props) => (
-    <div>
-        <h1>Add Expense</h1>
-        <ExpenseForm
-            onSubmit = {(expense) => {
-                props.dispatch(addExpense(expense));
-                props.history.push('/'); //switches pages using browser routing, you can still use back arrow
-            }}
-        />
-    </div>
-);
+export class AddExpensePage extends React.Component {
 
-export default connect()(AddExpensePage); //first parenthesis is what we need from the state, second parenth gives access to props.dispatch
+    onSubmit = (expense) => {
+        //props.dispatch(addExpense(expense));
+        this.props.addExpense(expense);
+        this.props.history.push('/'); //switches pages using browser routing, you can still use back arrow
+    };
+    render () {
+        return (
+            <div>
+                <h1>Add Expense</h1>
+                <ExpenseForm
+                    onSubmit={this.onSubmit}
+                />
+            </div>
+        )
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addExpense: (expense) => dispatch(addExpense(expense))
+    };
+
+};
+
+export default connect(undefined, mapDispatchToProps)(AddExpensePage); //first parenthesis is what we need from the state, second parenth gives access to props.dispatch
