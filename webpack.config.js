@@ -15,8 +15,9 @@ module.exports = (env) => {
     return {
         entry: './src/app.js',
     output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+        path: path.join(__dirname, 'public', 'dist'),
+        filename: 'bundle.js',
+        publicPath: '/dist/'
     }, //loader below
     module: {
         //rules for when to run the module and what loader
@@ -54,7 +55,8 @@ module.exports = (env) => {
     //dev-server is generating its own bundle.js file, replaces live server
     devServer: {
         static: path.join(__dirname, 'public'),
-        historyApiFallback: true //makes it go from server side routing to client side and has the index.html do everything
+        historyApiFallback: true, //makes it go from server side routing to client side and has the index.html do everything
+
     },
     mode: 'development'
     }
