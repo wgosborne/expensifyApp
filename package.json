@@ -28,6 +28,7 @@
     "express": "4.15.4",
     "live-server": "^1.2.0",
     "moment": "^2.29.4",
+    "node": "20.1.0",
     "normalize.css": "7.0.0",
     "raf": "3.3.2",
     "react": "15.6.1",
