@@ -10,7 +10,9 @@
     "build:prod": "webpack --env production",
     "dev-server": "webpack-dev-server",
     "test": "jest --config=jest.config.json",
-    "watch-test": "jest --watch"
+    "watch-test": "jest --watch",
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
     "@babel/preset-env": "^7.23.5",
@@ -23,6 +25,7 @@
     "enzyme": "3.0.0",
     "enzyme-adapter-react-15": "1.0.0",
     "enzyme-to-json": "3.0.1",
+    "express": "4.15.4",
     "live-server": "^1.2.0",
     "moment": "^2.29.4",
     "normalize.css": "7.0.0",
