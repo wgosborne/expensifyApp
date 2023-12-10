@@ -23,6 +23,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "css-loader": "0.28.4",
     "express": "4.15.4",
+    "firebase": "^4.2.0",
     "moment": "^2.29.4",
     "normalize.css": "7.0.0",
     "numeral": "2.0.6",
