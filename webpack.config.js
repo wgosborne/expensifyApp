@@ -3,6 +3,17 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+//process.env.NODE_ENV //global variable that stores the environment currently in
+//heroku sets it
+
+if (process.env.NODE_ENV === 'test') {
+    require('dotenv').config({ path: '.env.test'});
+} else if (process.env.NODE_ENV === 'development') {
+    require('dotenv').config({ path: '.env.development'});
+}
+
+
 //entry -> output, module.exports is a node thing
 module.exports = (env) => {
 

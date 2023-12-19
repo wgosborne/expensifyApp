@@ -21,6 +21,7 @@ test('should set up edit expense action object', () => {
 
 test('should set up add expense action object with provided values', () => {
     const expenseDate = {
+        id: '-NlpL0fkmdNpf6-kfVbA',
         description: 'Rent',
         amount: 100000000,
         createdAt: 69420,
@@ -40,6 +41,7 @@ test('should set up add expense action object with provided values', () => {
 
 test('should set up add expense action object with default values', () => {
     const expenseData = {
+        id: '-NlpL0fkmdNpf6-kfVbA',
         description: '',
         note: '',
         amount: 0,
