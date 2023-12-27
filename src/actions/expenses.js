@@ -43,6 +43,32 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+// SET_EXPENSES gets values from firebase and sets the array
+
+export const setExpenses = (expensesArray) => ({
+    type: 'SET_EXPENSES',
+    expensesArray
+});
+
+//export const startSetExpenses, I DONT USE THIS METHOD
+export const startSetExpenses = () => {
+    return(dispatch) => {
+        
+        return database.ref('expenses')
+            .once('value')
+            .then((snapshot) => {
+                const expenses = [];
+                snapshot.forEach((childSnapshot) => {
+                    expenses.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+                dispatch(setExpenses(expenses));
+            });
+}};
+
+
 //used named exports
 
 

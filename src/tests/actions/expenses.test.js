@@ -1,4 +1,8 @@
-import { addExpense, editExpense, removeExpense } from "../../actions/expenses";
+import { addExpense, editExpense, removeExpense, setExpenses } from "../../actions/expenses";
+import expenses from '../fixtures/expenses';
+// beforeEach(() => {
+//     databse
+// })
 
 //testing remove expense
 test('should set up remove espense action object', () => {
@@ -56,5 +60,14 @@ test('should set up add expense action object with default values', () => {
             ...expenseData,
             id: expect.any(String)
         }
-    })
+    });
 });
+
+test('should setup set expense action object with data', () => {
+    const action = setExpenses(expenses);
+    expect(action).toEqual({
+        type: 'SET_EXPENSES',
+        expenses
+    });
+});
+
