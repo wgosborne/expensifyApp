@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should call startLogout on button click 1`] = `
+<header>
+  <h1>
+    Expensify
+  </h1>
+  <NavLink
+    activeClassName="is-active"
+    aria-current="page"
+    exact={true}
+    to="/"
+  >
+    Dashboard
+  </NavLink>
+  <NavLink
+    activeClassName="is-active"
+    aria-current="page"
+    to="/create"
+  >
+    Create Expense
+  </NavLink>
+  <button
+    onClick={[Function]}
+  >
+    Logout
+  </button>
+</header>
+`;
+
 exports[`should render Header correctly 1`] = `
 <header>
   <h1>
@@ -20,5 +48,10 @@ exports[`should render Header correctly 1`] = `
   >
     Create Expense
   </NavLink>
+  <button
+    onClick={[Function]}
+  >
+    Logout
+  </button>
 </header>
 `;
