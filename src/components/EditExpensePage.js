@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
 import { editExpense, removeExpense } from "../actions/expenses";
+import database from '../firebase/firebase';
 
 export class EditExpensePage extends React.Component {
 
@@ -11,7 +12,15 @@ export class EditExpensePage extends React.Component {
     };
 
     onRemoveExpense = () => {
-        this.props.removeExpense({ id: this.props.expense.id});
+        database.ref(`expenses/${this.props.expense.id}`) //Removing data using remove
+            .remove()
+            .then((ref) => {
+                this.props.removeExpense({ id: this.props.expense.id});
+                console.log('data was removed');
+            }).catch((e) => {
+                console.log('did not remove data', e);
+            });
+        
         this.props.history.push('/');
     };
 
