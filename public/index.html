@@ -4,6 +4,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta Content-Security-Policy-Report-Only: script-src="https://accounts.google.com/gsi/client";
+            frame-src="https://accounts.google.com/gsi/";
+            connect-src="https://accounts.google.com/gsi/";
+         />
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" />
         <title>Expensify</title>
         <link rel="icon" type="image/png" href="/images/favicon.png"> 
         <link rel="stylesheet" type="text/css" href = '/dist/styles.css' />

@@ -78,6 +78,9 @@ module.exports = (env) => {
     devServer: {
         static: path.join(__dirname, 'public'),
         historyApiFallback: true, //makes it go from server side routing to client side and has the index.html do everything
+        // headers: {
+        //     'Cross-Origin-Embedder-Policy': 'unsafe-none'
+        // }
 
     },
     mode: 'development'
