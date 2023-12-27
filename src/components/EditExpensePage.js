@@ -7,6 +7,12 @@ import database from '../firebase/firebase';
 export class EditExpensePage extends React.Component {
 
     onSubmit = (expense) => {
+        database.ref(`expenses/${this.props.expense.id}`).update({ //update only on root level, we need the slash in quotes to update nested value
+            amount: expense.amount,
+            createdAt: expense.createdAt,
+            description: expense.description,
+            note: expense.note
+        });
         this.props.editExpense(this.props.expense.id, expense);
         this.props.history.push('/');
     };
