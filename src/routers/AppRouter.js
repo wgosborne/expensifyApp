@@ -6,20 +6,19 @@ import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
 import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
-import Header from '../components/Header';
 import LoginPage from '../components/LoginPage';
+import PrivateRoute from './PrivateRoute.js'
 
 export const history = createHistory();
 
 const AppRouter = () => ( //stateless functional component, browser router does it for me
     <Router history = {history}> 
     <div>
-        <Header />
         <Switch>
             <Route path='/' component={LoginPage} exact={true}/>
-            <Route path='/dashboard' component={ExpenseDashBoardPage}/>
-            <Route path='/create' component={AddExpensePage}/>
-            <Route path='/edit/:id' component={EditExpensePage}/>
+            <PrivateRoute path='/dashboard' component={ExpenseDashBoardPage}/>
+            <PrivateRoute path='/create' component={AddExpensePage}/>
+            <PrivateRoute path='/edit/:id' component={EditExpensePage}/>
             <Route path='/help' component={HelpPage}/>
             <Route component={NotFoundPage}/>
         </Switch>

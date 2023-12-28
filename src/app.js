@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { setExpenses } from './actions/expenses';
-import { setTextFilter } from './actions/filters'
-import getVisibleExpenses from './selectors/expenses'
+import { login, logout } from './actions/auth';
+import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
@@ -36,7 +36,7 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 //routes the user based on login
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log('someone logged in');
+        store.dispatch(login(user.uid));
         setTimeout(() => {
             database.ref('expenses')
             .once('value')
@@ -60,10 +60,10 @@ firebase.auth().onAuthStateChanged((user) => {
             if(history.location.pathname === '/') { //history.location is how we get their current location
                 history.push('/dashboard');
             }
-        }, 2000);
+        }, 100);
 
     } else {
-        console.log('someone logged out');
+        store.dispatch(logout());
         renderApp();
         history.push('/');
     }

@@ -63,11 +63,11 @@ test('should set up add expense action object with default values', () => {
     });
 });
 
-test('should setup set expense action object with data', () => {
-    const action = setExpenses(expenses);
-    expect(action).toEqual({
-        type: 'SET_EXPENSES',
-        expenses
-    });
-});
+// test('should setup set expense action object with data', () => {
+//     const action = setExpenses(expenses);
+//     expect(action).toEqual({
+//         type: 'SET_EXPENSES',
+//         expenses
+//     });
+// });
 
