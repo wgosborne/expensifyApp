@@ -7,7 +7,7 @@ import database from '../firebase/firebase';
 export class EditExpensePage extends React.Component {
 
     onSubmit = (expense) => {
-        database.ref(`expenses/${this.props.expense.id}`).update({ //update only on root level, we need the slash in quotes to update nested value
+        database.ref(`users/${this.props.auth.uid}/expenses/${this.props.expense.id}`).update({ //update only on root level, we need the slash in quotes to update nested value
             amount: expense.amount,
             createdAt: expense.createdAt,
             description: expense.description,
@@ -18,7 +18,7 @@ export class EditExpensePage extends React.Component {
     };
 
     onRemoveExpense = () => {
-        database.ref(`expenses/${this.props.expense.id}`) //Removing data using remove
+        database.ref(`users/${this.props.auth.uid}/expenses/${this.props.expense.id}`) //Removing data using remove
             .remove()
             .then((ref) => {
                 this.props.removeExpense({ id: this.props.expense.id});
@@ -45,7 +45,8 @@ export class EditExpensePage extends React.Component {
 
 const mapStateToProps = (state, props) => {
     return {
-        expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+        expense: state.expenses.find((expense) => expense.id === props.match.params.id),
+        auth: state.auth // Mapping auth state to props
     };
 };
 

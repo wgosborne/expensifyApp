@@ -4,6 +4,8 @@ import expenses from '../fixtures/expenses';
 //     databse
 // })
 
+//const uid = 'abc123';
+
 //testing remove expense
 test('should set up remove espense action object', () => {
     const action = removeExpense({ id: '123' });
@@ -71,3 +73,4 @@ test('should set up add expense action object with default values', () => {
 //     });
 // });
 
+//need to add test cases for adding and removing from firebase

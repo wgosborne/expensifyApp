@@ -7,7 +7,7 @@ export const addExpense = (expense) => ({
     expense
 });
 
-//I dont use this method
+//I dont use this method, I DO THIS IN ADDEXPENSEAGE.JS
 export const startAddExpense = (expenseData = {}) => {
     return(dispatch) => {
     const {
@@ -30,13 +30,13 @@ export const startAddExpense = (expenseData = {}) => {
 
 
 
-//REMOVE_EXPENSE
+//REMOVE_EXPENSE, I do the database in EDITEXPENSEPAGE.JS
 export const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id: id
 });
 
-//EDIT_EXPENSE
+//EDIT_EXPENSE, I do the database in EDITEXPENSEPAGE.JS
 export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
@@ -50,7 +50,7 @@ export const setExpenses = (expensesArray) => ({
     expensesArray
 });
 
-//export const startSetExpenses, I DONT USE THIS METHOD
+//export const startSetExpenses, I DONT USE THIS METHOD, I DO THIS IN APP.JS
 export const startSetExpenses = () => {
     return(dispatch) => {
         

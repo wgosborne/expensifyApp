@@ -6,7 +6,8 @@ import database from '../firebase/firebase';
 
 export class AddExpensePage extends React.Component {
   onSubmit = (expense) => {
-    database.ref('expenses').push(expense).then((ref) => {
+    const uid = this.props.auth.uid;
+    database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
         this.props.addExpense({
           ...expense,
           id: ref.key
@@ -30,10 +31,14 @@ export class AddExpensePage extends React.Component {
       </div>
     );
   }
-}
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth // Mapping auth state to props, added this to not use middleware and access state here so I can get the ID and use it above
+});
 
 const mapDispatchToProps = (dispatch) => ({
   addExpense: (expense) => dispatch(addExpense(expense))
 });
 
-export default connect(undefined, mapDispatchToProps)(AddExpensePage); //first parenthesis is what we need from the state, second parenth gives access to props.dispatch
+export default connect(mapStateToProps, mapDispatchToProps)(AddExpensePage); //first parenthesis is what we need from the state, second parenth gives access to props.dispatch

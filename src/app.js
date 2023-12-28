@@ -38,7 +38,7 @@ firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid));
         setTimeout(() => {
-            database.ref('expenses')
+            database.ref(`users/${user.uid}/expenses`)
             .once('value')
             .then((snapshot) => {
                 const expensesArray = [];
