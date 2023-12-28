@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { setExpenses } from './actions/expenses';
 import { setTextFilter } from './actions/filters'
@@ -11,6 +11,7 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from'./firebase/firebase';
 import database from './firebase/firebase';
+import { render } from 'enzyme';
 
 const store = configureStore();
 
@@ -20,33 +21,51 @@ const jsx = (
     </Provider>
 );
 
+let hasRendered = false;
+const renderApp = () => {
+    if(!hasRendered) {
+        ReactDOM.render(jsx, document.getElementById('app'));
+        hasRendered = true;
+    }
+}
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
-setTimeout(() => {
-    database.ref('expenses')
-    .once('value')
-    .then((snapshot) => {
-        const expensesArray = [];
-        snapshot.forEach((childSnapshot) => {
-            expensesArray.push({
-                id: childSnapshot.key,
-                ...childSnapshot.val()
-            });
-        });
-        console.log(expensesArray);
-        //this.props.setExpenses(expenses);
-        store.dispatch(setExpenses(expensesArray))
-    });
 
-    //since I am not using middleware mine takes a sec to load
-    ReactDOM.render(jsx, document.getElementById('app'));
-}, 3000);
 
+//routes the user based on login
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         console.log('someone logged in');
+        setTimeout(() => {
+            database.ref('expenses')
+            .once('value')
+            .then((snapshot) => {
+                const expensesArray = [];
+                snapshot.forEach((childSnapshot) => {
+                    expensesArray.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+                console.log(expensesArray);
+                //this.props.setExpenses(expenses);
+                store.dispatch(setExpenses(expensesArray))
+            }).then(() => {
+                renderApp();
+            });
+        
+            //since I am not using middleware mine takes a sec to load
+            
+            if(history.location.pathname === '/') { //history.location is how we get their current location
+                history.push('/dashboard');
+            }
+        }, 2000);
+
     } else {
         console.log('someone logged out');
+        renderApp();
+        history.push('/');
     }
 });
 
