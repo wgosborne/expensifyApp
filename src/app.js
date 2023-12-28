@@ -31,11 +31,10 @@ const renderApp = () => {
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
-
-
 //routes the user based on login
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+        console.log(user.uid)
         store.dispatch(login(user.uid));
         setTimeout(() => {
             database.ref(`users/${user.uid}/expenses`)
@@ -53,17 +52,18 @@ firebase.auth().onAuthStateChanged((user) => {
                 store.dispatch(setExpenses(expensesArray))
             }).then(() => {
                 renderApp();
+                if (history.location.pathname === '/') {
+                    history.push('/dashboard');
+                  }
             });
         
             //since I am not using middleware mine takes a sec to load
             
-            if(history.location.pathname === '/') { //history.location is how we get their current location
-                history.push('/dashboard');
-            }
         }, 100);
 
     } else {
         store.dispatch(logout());
+        console.log('logged out')
         renderApp();
         history.push('/');
     }
