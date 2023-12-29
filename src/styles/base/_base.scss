@@ -3,6 +3,11 @@
 
 //Sizing: we are using REMs, we learned these in MIS 421
 //Choosing based on how many pixels, getting base 10
+
+* {
+    box-sizing: border-box; //takes padding and border into account for size
+}
+
 html {
     font-size: 62.5%;
 }
@@ -12,6 +17,7 @@ body {
     background: white;
     font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
+    line-height: 1.6;
 }
 
 button {

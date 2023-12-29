@@ -1,0 +1,24 @@
+.box-layout { //alphabetical usually
+    align-items: center;
+    background: url('/images/mythbustersPic.jpg'); //browser only has access to public directory, so we do the path from there
+    background-size: cover; //makes image fit right
+    display: flex;
+    height: 100vh; //100% of viewport height
+    justify-content: center;
+    width: 100vw; //100% viewport width
+}
+
+.box-layout__box {
+    background: fade-out($color: white, $amount: .15);
+    border-radius: 3px; //slight border rounded edges
+    padding: $l-size $m-size;
+    text-align: center;
+    width: 25rem;
+
+}
+
+.box-layout__title {
+    margin: 0 0 $m-size 0; //top, right, bottom, left
+    line-height: 1;
+    
+}

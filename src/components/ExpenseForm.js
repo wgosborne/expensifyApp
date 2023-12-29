@@ -49,7 +49,7 @@ export default class ExpenseForm extends React.Component { //using a class compo
         e.preventDefault(); //prevents full page refresh
 
         if (!this.state.description || !this.state.amount) {
-            this.setState(() => ({ error: 'The description and amount fields must be filled out before submitted' }));
+            this.setState(() => ({ error: 'The description and amount fields must be filled out before submission' }));
         } else {
             //clear the error
             this.setState(() => ({ error: '' }));
@@ -65,10 +65,10 @@ export default class ExpenseForm extends React.Component { //using a class compo
 
     render() {
         return (
-            <div>
-                <p>{this.state.error}</p>
-                <form onSubmit={this.onSubmit}>
+                <form className='form' onSubmit={this.onSubmit}>
+                    <p className="form__error">{this.state.error}</p>
                     <input
+                        className="text-input"
                         type="text"
                         placeholder="Description"
                         autoFocus
@@ -76,6 +76,7 @@ export default class ExpenseForm extends React.Component { //using a class compo
                         onChange =  {this.onDescriptionChange}
                     />
                     <input
+                        className="text-input"
                         type="text" //switching to text to add more validation
                         placeholder="Amount"
                         value = {this.state.amount}
@@ -90,15 +91,18 @@ export default class ExpenseForm extends React.Component { //using a class compo
                         isOutsideRange={(day) => false} //makes everyday available
                     />
                     <textarea
+                        className="textarea"
                         placeholder="Add a note for your expense (optional)"
                         value = {this.state.note}
                         onChange = {this.onNoteChange}
                     >
-
                     </textarea>
-                    <button>Confirm Expense</button>
+
+                    <div>
+                        <button className="button">Save Expense</button>
+                    </div>
+
                 </form>
-            </div>
         )
     }
 }

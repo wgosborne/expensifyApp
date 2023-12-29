@@ -1,0 +1,24 @@
+.button {
+    background-color: $blue;
+    border: none;
+    color: white;
+    display: inline-block; //makes sure margins work
+    font-size: $font-size-large;
+    font-weight: 300;
+    line-height: 1;
+    padding: $s-size;
+    text-decoration: none;
+}
+
+.button--link { //we use -- for modifiers
+    background: none;
+}
+
+.button--secondary {
+    background: #888888;
+    margin-bottom: $m-size; //prevents it from going all the way to the bottom
+
+    @media (min-width: $desktop-breakpoint) {
+        margin-bottom: $l-size; //prevents it from going all the way to the bottom
+    }
+}

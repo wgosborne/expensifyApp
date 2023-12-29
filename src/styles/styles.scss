@@ -1,3 +1,14 @@
 //This is usually done in alphabetical order
 @import './base/settings';
 @import './base/base';
+@import './components/button';
+@import './components/box-layout'; //underscore excluded when importing
+@import './components/content-container';
+@import './components/header';
+@import './components/page-header';
+@import './components/input-group';
+@import './components/inputs';
+@import './components/form';
+@import './components/visibility';
+@import './components/list';
+@import './components/loader';

@@ -25,7 +25,7 @@ module.exports = (env) => {
     //const CSSExtract = new MiniCssExtractPlugin('styles.css')
 
     return {
-        entry: './src/app.js',
+        entry: ['babel-polyfill', './src/app.js'], //babel-polyfill adds the support for new things that old broswers may not have
     output: {
         path: path.join(__dirname, 'public', 'dist'),
         filename: 'bundle.js',
