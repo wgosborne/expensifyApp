@@ -14,7 +14,7 @@ export const LoginPage = ({ startLogin }) => (
     </div>
 );
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
     startLogin: () => startLogin()
 });
 
