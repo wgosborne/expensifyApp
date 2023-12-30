@@ -18,4 +18,6 @@ const database = firebase.database();
 //applying google authentication
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, googleAuthProvider, database as default };
+const microsoftAuthProvider = new firebase.auth.OAuthProvider('microsoft.com');
+
+export { firebase, googleAuthProvider, microsoftAuthProvider, database as default };
