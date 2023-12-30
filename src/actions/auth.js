@@ -7,7 +7,7 @@ export const login = (uid) => ({
 
 export const startLogin = () => {
     console.log('logging in action running');
-    return firebase.auth().signInWithRedirect(googleAuthProvider); //built in, gonna sign in and another page authentication, tried pop up but got errors
+    return firebase.auth().signInWithPopup(googleAuthProvider); //built in, gonna sign in and another page authentication, tried pop up but got errors
     
 };
 
