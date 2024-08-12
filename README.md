@@ -1,4 +1,4 @@
-# indecisionApp
+# Expensify App
 react course project
 
 This is a project that I worked on throughout part 1 of my react UDemy course by Andrew Mead. I began this application in May of 2023
@@ -36,6 +36,6 @@ My favorite places to work on it:
   Directions to run:
   - Clone down the gitHub link
   - open a command promp and navigate into the react-course-projects folder -> indecision-app
-  - run the command 'git checkout master' to switch to master
+  - run the command 'git checkout master' to switch to master (actually now its just main)
   - run 'npm install' to install all the packages in the packagge.json folder
   - run 'yarn run dev-server' to host it locally (by the end of the course I should be able to deploy it!!!! :))
