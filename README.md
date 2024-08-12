@@ -39,3 +39,6 @@ My favorite places to work on it:
   - run the command 'git checkout master' to switch to master (actually now its just main)
   - run 'npm install' to install all the packages in the packagge.json folder
   - run 'yarn run dev-server' to host it locally (by the end of the course I should be able to deploy it!!!! :))
+ 
+
+Link to deeb: https://console.firebase.google.com/u/0/project/expensify-1c07f/database/expensify-1c07f-default-rtdb/data?pli=1
