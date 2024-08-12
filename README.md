@@ -2,6 +2,7 @@
 react course project
 
 Heroku Host Link: https://dashboard.heroku.com/apps (when it says my authenticator app, it means Duo)
+Jest test cases- yarn run watch-test (?)
 
 This is a project that I worked on throughout part 1 of my react UDemy course by Andrew Mead. I began this application in May of 2023
 and finished it at 12:20am on 11/26/23 after returning home from Thanksgiving in Brevard, NC with Morgan, Soern, and Mom. 
