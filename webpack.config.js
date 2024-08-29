@@ -81,6 +81,7 @@ module.exports = (env) => {
         // headers: {
         //     'Cross-Origin-Embedder-Policy': 'unsafe-none'
         // }
+        allowedHosts: "all"
 
     },
     mode: 'development'
