@@ -26,15 +26,15 @@ My favorite places to work on it:
   Challenges:
   The hardest part was when there was an issue that arose that was not discussed in the video or looked like something I had never seen
   before. I ran into a lot of issues when it came to depencencies and versioning. I think that following a video that was old made
-  it harder but I liked it because it added a challenge and I totally improved my problem solving skills in regaurd to new things.
-  To sokve the problem I would start by pin pointing what I understood from the error message and using the tools in my own toolbox
-  to fin the line the error was on and troubleshoot. From there I would type in general things into google and try  and parse
-  out meaning from people's responses to others who had erros simlar to mine, even if they were dealing with another framework or
+  it harder but I liked it because it added a challenge and I totally improved my problem solving skills in regard to new things.
+  To solve the problem I would start by pin-pointing what I understood from the error message and using the tools in my own toolbox
+  to find the line the error was on and troubleshoot. From there I would type in general things into google and try and parse
+  out meaning from people's responses to others who had errors simlar to mine, even if they were dealing with another framework or
   language. Finally, Morgan suggested that I try chatGPT (duh why didn't I even try that at first lol) and that helped me add some
   key lines to run in the command prompt to get my wheels turning (npm install, deleting and re adding, npm clear cache, etc).
   The thing I need to remember and focus on is that everything is figure-out-able and to not give up. In the beggining I would
   get so discouraged and let large amounts of time pass between hard work sessions. I learned that I don't need to get bogged down
-  over stuff like that. Even the pros run into things that feeel impossible and it just takes time and focus.
+  over stuff like that. Even the pros run into things that feel impossible and it just takes time and focus.
 
   Directions to run:
   - Clone down the gitHub link
